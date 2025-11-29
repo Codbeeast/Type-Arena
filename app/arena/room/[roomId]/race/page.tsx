@@ -99,20 +99,18 @@ export default function RacePage() {
 
         // Check finish
         if (value.length >= text.length) {
-            if (value === text) {
-                setIsFinished(true);
-                setShowResultsModal(true); // Show modal immediately
-                if (playerName) {
-                    updateProgress({
-                        roomId,
-                        playerName,
-                        progress: 100,
-                        wpm: currentWpm,
-                        accuracy: currentAccuracy,
-                        finished: true,
-                    });
-                }
-                // setTimeout(() => router.push(`/arena/room/${roomId}/results`), 1500);
+            // Finish regardless of accuracy as long as length is reached
+            setIsFinished(true);
+            setShowResultsModal(true); // Show modal immediately
+            if (playerName) {
+                updateProgress({
+                    roomId,
+                    playerName,
+                    progress: 100, // Force 100% progress since they reached the end
+                    wpm: currentWpm,
+                    accuracy: currentAccuracy,
+                    finished: true,
+                });
             }
         }
     };
