@@ -9,8 +9,9 @@ const convex = convexUrl ? new ConvexReactClient(convexUrl) : null;
 
 export function ConvexClientProvider({ children }: { children: ReactNode }) {
     if (!convex) {
-        // In build environment or if env var is missing, render children without provider
-        return <>{children}</>;
+        // In build environment or if env var is missing, do not render children
+        // as they might depend on the Convex provider.
+        return null;
     }
     return <ConvexProvider client={convex}>{children}</ConvexProvider>;
 }
