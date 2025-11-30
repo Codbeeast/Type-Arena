@@ -40,3 +40,11 @@ body {
   }
 }
 
+.hide-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: none;     
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             
+}
